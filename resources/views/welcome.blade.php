@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
         <!-- Styles -->
         <style>
@@ -21,7 +22,7 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+        <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
@@ -127,6 +128,27 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+    <div class="container">
+    <h3>My Info</h3>
+    <table class="table">
+    <thead class="thead-light">
+        <tr>
+        <th scope="col">Họ và tên</th>
+        <th scope="col">Ngày sinh</th>
+        <th scope="col">Trường đã học</th>
+        <th scope="col">Mục tiêu sau khi học xong laravel</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>Lê Thành Luân</td>
+        <td>29-02-2000</td>
+        <td>Học Viện Nông Nghiệp Việt Nam</td>
+        <td>Đi thực tập ^^</td>
+        </tr>
+    </tbody>
+    </table>                                   
+    </div>
     </body>
 </html>
