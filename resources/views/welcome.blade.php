@@ -148,7 +148,15 @@
         <td>Đi thực tập ^^</td>
         </tr>
     </tbody>
-    </table>                                   
+    </table>   
+
+    <form action="{{route('save')}}" method="post">
+    @csrf
+    <!-- name: <input type="text"><br><br> -->
+    <!-- email: <input type="email"> -->
+
+    <button type="submit">Save</button>
+    </form>                                
     </div>
     </body>
 </html>
