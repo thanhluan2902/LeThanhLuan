@@ -1,4 +1,47 @@
 @extends('layouts2.master')
+
+@section('title')
+    My Profile
+@endsection
+
+@section('css')
+<style>   
+    .main {
+        text-align: center;
+    }
+
+    .top {
+        height: 100px;
+        background: green;
+        color: white;
+        line-height: 100px;
+        font-size: 50px;
+        font-weight: 700;
+    }
+
+    .bot {
+        height: 70px;
+        background: green;
+        color: white;
+        line-height: 70px;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .lol {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    img {
+        width: 100%;
+        height: 500px;
+    }
+    .oke {
+        text-align: left;
+    }
+</style>
+@endsection
 @section('body')
 <div class="col-md-12">
     <div class="row">
