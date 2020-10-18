@@ -7,6 +7,7 @@
 @section('css')
 <style>   
     .main {
+        margin-top: 40px;
         text-align: center;
     }
 
