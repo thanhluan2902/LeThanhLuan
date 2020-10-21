@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>EDITEDIT</title>
+    <title>Create</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -37,7 +37,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                EDITEDIT
+                Chỉnh sửa công việcviệc
             </a>
         </div>
 
@@ -48,22 +48,47 @@
     <div class="col-sm-offset-2 col-sm-8">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Thêm công việc mới
+               editer - Phan Ngọc Luân
             </div>
 
             <div class="panel-body">
                 <!-- Display Validation Errors -->
 
             <!-- New Task Form -->
-                <form action="" method="POST" class="form-horizontal">
+                <form action="{{ route('task.update' , $task->id) }}" method="post" class="form-horizontal">
                 @csrf
-
+                {{ csrf_field() }}
+                {{ method_field('PUT') }}
                 <!-- Task Name -->
+               
                     <div class="form-group">
                         <label for="task-name" class="col-sm-3 control-label">Tên công việc</label>
 
                         <div class="col-sm-6">
-                            <input type="text" name="name" id="task-name" class="form-control" value="">
+                            <input type="text" name="name" id="task-name" class="form-control" value="{{ $task->name }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-name" class="col-sm-3 control-label">Content</label>
+                        <div class="col-sm-6">
+                            <input type="textarea" name="content" id="task-name" class="form-control" value="{{ $task->content }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-name" class="col-sm-3 control-label">Priority</label>
+                        <div class="col-sm-6">
+                            Bình thường-> <input type="radio" name="priority" id="task-name" class="" value="0">  
+                            Quan trọng-> <input type="radio" checked = "checked" name="priority" id="task-name" class="" value="1"> 
+                            Khẩn cấp-> <input type="radio" name="priority" id="task-name" class="" value="2"> 
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-name" class="col-sm-3 control-label">Ngày hoàn thành</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="deadline" id="task-name" class="form-control" value="{{ $task->deadline }}">
                         </div>
                     </div>
 
@@ -71,86 +96,11 @@
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-6">
                             <button type="submit" class="btn btn-default">
-                                <i class="fa fa-btn fa-plus"></i>Thêm công việc
+                                <i class="fa fa-btn fa-plus"></i>Cập nhật công việc
                             </button>
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
-
-        <!-- Current Tasks -->
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Danh sách công việc hiện tại
-            </div>
-
-            <div class="panel-body">
-                <table class="table table-striped task-table">
-                    <thead>
-                    <th>Tên công việc</th>
-                    <th>&nbsp;</th>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="table-text"><div>Làm bài tập Laravel </div></td>
-                        <!-- Task Complete Button -->
-                        <td>
-                            <a href="" type="submit" class="btn btn-success">
-                                <i class="fa fa-btn fa-check"></i>Hoàn thành
-                            </a>
-                        </td>
-                        <!-- Task Delete Button -->
-                        <td>
-                            <form action="" method="get">
-                                @csrf
-
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fa fa-btn fa-trash"></i>Xoá
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="table-text"><div>Làm bài tập PHP  </div></td>
-                        <!-- Task Complete Button -->
-                        <td>
-                            <a href="" type="submit" class="btn btn-success">
-                                <i class="fa fa-btn fa-check"></i>Hoàn thành
-                            </a>
-                        </td>
-                        <!-- Task Delete Button -->
-                        <td>
-                            <form action="" method="get">
-                               @csrf
-
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fa fa-btn fa-trash"></i>Xoá
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="table-text"><div><strike>Làm project Laravel </strike></div></td>
-                        <!-- Task Complete Button -->
-                        <td>
-                            <a href="" type="submit" class="btn btn-success">
-                                <i class="fa fa-btn fa-refresh"></i>Làm lại
-                            </a>
-                        </td>
-                        <!-- Task Delete Button -->
-                        <td>
-                            <form action="" method="get">
-                                @csrf
-
-                                <button type="submit" class="btn btn-danger">
-                                    <i class="fa fa-btn fa-trash"></i>Xoá
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>

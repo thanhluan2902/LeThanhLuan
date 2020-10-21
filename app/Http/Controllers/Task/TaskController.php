@@ -15,41 +15,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        
-        // $tasks = Task::all();
-
-        // return view('task.index', ['tasks' => $tasks]);
-
-        $tasks = [
-            [
-                'id' => 1,
-                'name' => 'hoc laravel',
-                'deadline' => '2020-10-01 21:04:17',
-                'status' => 0
-            ],
-
-            [
-                'id' => 2,
-                'name' => 'hoc php',
-                'deadline' => '2020-10-01 21:04:17',
-                'status' => 1
-            ],
-
-            [
-                'id' => 3,
-                'name' => 'hoc java',
-                'deadline' => '2020-10-01 21:04:17',
-                'status' => -1
-            ],
-
-            [
-                'id' => 4,
-                'name' => 'hoc frontend',
-                'deadline' => '2020-10-01 21:04:17',
-                'status' => 1
-            ]
-        ];
-
+        $tasks = Task::all();
         return view('task.index', ['tasks' => $tasks]);
     }
 
@@ -60,9 +26,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-
-        // return view('task.create', []);
-        dd('Đây là function create');
+        return view('task.create');
     }
 
     /**
@@ -73,12 +37,23 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        // $name = $request->get('name' , 'Nhuw buoofi');
-        //$emai = $request->name;
-        
-        // $name = $request->except(['name']);
-        $name = $request->only(['name' , 'deadline']);
-        dd($name);
+        $name = $request->get('name');
+        $deadline =  $request->get('deadline');
+        $deadline = str_replace('T' , ' ' , $deadline) . ':00';
+        $content = $request->get('content');
+        $priority = $request->get('priority');
+
+        $task = new Task();
+
+        $task->status = 1;
+        $task->name = $name;
+        $task->priority = $priority;
+        $task->deadline = $deadline;
+        $task->content = $content;
+
+        $task->save();
+
+        return redirect()->route('task.index');
 
     }
 
@@ -105,7 +80,10 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        dd('Đây là function edit');
+        $task = Task::find($id);
+
+        return view('task.edit' , ['task' => $task]);
+
     }
 
     /**
@@ -117,7 +95,20 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd('Đây là function updateupdate');
+        $name = $request->get('name');
+        $deadline =  $request->get('deadline');
+        $content = $request->get('content');
+        $priority = $request->get('priority');
+
+        $task = Task::find($id);
+        $task->priority = $priority;
+        $task->name = $name;
+        $task->deadline = $deadline;
+        $task->content = $content;
+
+        $task->save();
+
+        return redirect()->route('task.index');
     }
 
     /**
@@ -128,12 +119,12 @@ class TaskController extends Controller
      */
     public function destroy(Request $request , $id)
     {
-        // $tasks = Task::find($id);
-        // $tasks->delete();
-        // return redirect()->route('task.index');
+        $tasks = Task::find($id);
+        $tasks->delete();
+        return redirect()->route('task.index');
 
-        $task = $request->id;
-        dd($task);
+        // $task = $request->id;
+        // dd($task);
     }
 
     public function complete($id) {

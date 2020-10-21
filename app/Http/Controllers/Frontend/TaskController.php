@@ -19,36 +19,6 @@ class TaskController extends Controller
         $tasks = Task::all();
 
         return view('task.index', ['tasks' => $tasks]);
-
-        // $lists = [
-        //     [
-        //         'id' => 1,
-        //         'name' => 'hoc laravel',
-        //         'status' => 0
-        //     ],
-
-        //     [
-        //         'id' => 2,
-        //         'name' => 'hoc php',
-        //         'status' => 1
-        //     ],
-
-        //     [
-        //         'id' => 3,
-        //         'name' => 'hoc java',
-        //         'status' => -1
-        //     ],
-
-        //     [
-        //         'id' => 4,
-        //         'name' => 'hoc frontend',
-        //         'status' => 1
-        //     ]
-        // ];
-
-        // return view('task.index' , [
-        //     'lists' => $lists
-        // ]);
     }
 
     /**

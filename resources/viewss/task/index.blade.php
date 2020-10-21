@@ -37,7 +37,7 @@
 
             <!-- Branding Image -->
             <a class="navbar-brand" href="{{ url('/') }}">
-                INDEX
+                List công  việc
             </a>
         </div>
 
@@ -46,27 +46,35 @@
 
 <div class="container">
     <div class="col-sm-offset-2 col-sm-8">
-        <div class="panel panel-default">
+        {{-- <div class="panel panel-default">
             <div class="panel-heading">
                 Thêm công việc mới
             </div>
 
-            <div class="panel-body">
+            <div class="panel-body"> --}}
                 <!-- Display Validation Errors -->
 
             <!-- New Task Form -->
-                <form action="{{ route('task.store') }}" method="POST" class="form-horizontal">
-                @csrf
-                {{ csrf_field() }}
+                {{-- <form action="{{ route('task.store') }}" method="POST" class="form-horizontal"> --}}
+                {{-- @csrf --}}
+                {{-- {{ csrf_field() }} --}}
                 {{-- {{ method_field('PUT') }} --}}
                 <!-- Task Name -->
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="task-name" class="col-sm-3 control-label">Tên công việc</label>
 
                         <div class="col-sm-6">
                             <input type="text" name="name" id="task-name" class="form-control" value="">
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="task-name" class="col-sm-3 control-label">Content</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="content" id="task-name" class="form-control" value="">
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="task-name" class="col-sm-3 control-label">Ngày hoàn thành</label>
                         <div class="col-sm-6">
@@ -84,7 +92,7 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Current Tasks -->
         <div class="panel panel-default">
@@ -142,6 +150,18 @@
 
                                 <button type="submit" class="btn btn-danger">
                                     <i class="fa fa-btn fa-trash"></i>Xoá
+                                </button>
+                            </form>
+                        </td>
+
+                        <td>
+                            <form action="{{ route('task.edit' , $value['id']) }}" method="get">
+                                @csrf
+                                {{ csrf_field() }}
+                                {{-- {{ method_field('DELETE') }} --}}
+
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fa fa-btn fa-trash"></i>edit
                                 </button>
                             </form>
                         </td>
